@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import Beers from "../components/Beers";
 import Head from "next/head";
+import FilterInput from "../components/FilterInput";
 
 export default function Home() {
   const { data, error, isError, isLoading } = useQuery("beers", () =>
@@ -20,6 +21,7 @@ export default function Home() {
       <Head>
         <title>Punk API | All beers</title>
       </Head>
+      <FilterInput />
       <Beers beers={data} />
     </>
   );
