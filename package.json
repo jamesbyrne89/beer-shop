@@ -11,6 +11,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-is": "latest",
+    "react-query": "^3.13.11",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {

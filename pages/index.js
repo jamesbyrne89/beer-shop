@@ -1,10 +1,26 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import { useQuery } from "react-query";
+import Beers from "../components/Beers";
+import Head from "next/head";
 
 export default function Home() {
-  return <Title>My page</Title>
+  const { data, error, isError, isLoading } = useQuery("beers", () =>
+    fetch("https://api.punkapi.com/v2/beers").then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  return (
+    <>
+      <Head>
+        <title>Punk API | All beers</title>
+      </Head>
+      <Beers beers={data} />
+    </>
+  );
 }
