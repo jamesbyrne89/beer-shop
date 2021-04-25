@@ -1,4 +1,3 @@
-import React from "react";
 import Head from "next/head";
 import { useQuery } from "react-query";
 import styled from "styled-components";
